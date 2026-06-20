@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Landscape Orientation: Reduced vertical spacing -->
+    <!-- Reduced spacing for landscape -->
+    <dimen name="spacing_extra_small">3dp</dimen>
+    <dimen name="spacing_small">6dp</dimen>
+    <dimen name="spacing_medium">10dp</dimen>
+    <dimen name="spacing_large">14dp</dimen>
+    <dimen name="spacing_extra_large">20dp</dimen>
+    <dimen name="spacing_xxl">28dp</dimen>
+
+    <!-- Component Sizes -->
+    <dimen name="button_height">44dp</dimen>
+    <dimen name="button_height_small">36dp</dimen>
+    <dimen name="toolbar_height">52dp</dimen>
+
+    <!-- Card & List Items - reduced height for landscape -->
+    <dimen name="list_item_height">100dp</dimen>
+    <dimen name="list_item_height_compact">70dp</dimen>
+    <dimen name="image_height">180dp</dimen>
+
+    <!-- Bottom Sheet -->
+    <dimen name="bottom_sheet_height">200dp</dimen>
+    <dimen name="bottom_sheet_height_expanded">340dp</dimen>
+</resources>

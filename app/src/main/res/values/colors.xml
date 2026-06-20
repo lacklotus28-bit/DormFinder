@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Enhanced Mint Green Theme Colors -->
+    <color name="mint_primary">#00D4A3</color>
+    <color name="mint_primary_dark">#00B88A</color>
+    <color name="mint_primary_light">#33DDB8</color>
+    <color name="mint_border_dark">#005544</color>
+    <color name="mint_secondary">#00C795</color>
+    <color name="mint_accent">#26E5B3</color>
+    <color name="mint_light">#E8FFF8</color>
+    <color name="mint_extra_light">#F5FFFC</color>
+    <color name="mint_text">#00A87E</color>
+    <color name="mint_bg_light">#F0FFF9</color>
+    <color name="mint_surface">#F8FFFD</color>
+    <color name="mint_background">#F0FFF9</color>
+    
+    <!-- Clean White Backgrounds -->
+    <color name="white">#FFFFFF</color>
+    <color name="off_white">#FAFAFA</color>
+    <color name="background_light">#F8FFFD</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="background_color">#FFFFFF</color>
+    <color name="background_gray">#F5F5F5</color>
+    
+    <!-- Dark Green for Headers Only -->
+    <color name="dark_green">#0D3D2F</color>
+    <color name="dark_green_light">#1A5C4A</color>
+    
+    <!-- Enhanced Text Colors - Better Contrast -->
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#666666</color>
+    <color name="text_tertiary">#999999</color>
+    <color name="text_on_mint">#FFFFFF</color>
+    <color name="text_hint">#BDBDBD</color>
+    
+    <!-- Enhanced Card Colors -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_background_elevated">#FEFEFE</color>
+    <color name="card_border">#E8F5F2</color>
+    <color name="card_shadow">#15000000</color>
+    <color name="card_shadow_light">#08000000</color>
+    
+    <!-- Enhanced Dark Theme Colors -->
+    <color name="dark_background">#0F1419</color>
+    <color name="dark_surface">#1A2027</color>
+    <color name="dark_surface_elevated">#242B33</color>
+    <color name="dark_card">#1E252D</color>
+    <color name="dark_card_elevated">#252C35</color>
+    <color name="dark_border">#2A3139</color>
+    <color name="dark_divider">#2D343C</color>
+    
+    <!-- Enhanced Text on Dark Backgrounds -->
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_dark">#B8C5D1</color>
+    <color name="text_tertiary_dark">#8A9BA8</color>
+    <color name="text_hint_dark">#6B7B88</color>
+
+    <!-- Status Colors -->
+    <color name="status_approved_bg">#E8F8F4</color>
+    <color name="status_approved_text">#00A87E</color>
+    <color name="status_declined_bg">#FFEBEE</color>
+    <color name="status_declined_text">#D32F2F</color>
+    <color name="status_pending_bg">#FFF8E1</color>
+    <color name="status_pending_text">#F57C00</color>
+    
+    <!-- Notification Colors -->
+    <color name="notification_unread_bg">#F0FFF9</color>
+    <color name="notification_badge">#F44336</color>
+    
+    <!-- Success/Error Colors -->
+    <color name="success">#00D9A3</color>
+    <color name="error">#F44336</color>
+    <color name="error_dark">#D32F2F</color>
+    <color name="error_light">#FFEBEE</color>
+    <color name="warning">#FF9800</color>
+    <color name="info">#2196F3</color>
+    
+    <!-- Gold Star for Ratings -->
+    <color name="rating_star">#FFB300</color>
+    <color name="rating_star_filled">#FFC107</color>
+    
+    <!-- Dividers and Borders -->
+    <color name="divider_color">#E0E0E0</color>
+    <color name="border_light">#F0F0F0</color>
+    
+    <!-- Standard Colors -->
+    <color name="black">#000000</color>
+    <color name="gray_light">#F5F5F5</color>
+    <color name="gray_medium">#BDBDBD</color>
+    <color name="gray_dark">#757575</color>
+    <color name="gray_text">#333333</color>
+    <color name="gray">#9E9E9E</color>
+    <color name="light_gray">#E0E0E0</color>
+    
+    <!-- Primary Colors -->
+    <color name="primary">@color/mint_primary</color>
+    <color name="primary_color">@color/mint_primary</color>
+    <color name="primary_light">@color/mint_light</color>
+    <color name="accent_color">@color/mint_accent</color>
+    
+    <!-- Transparent overlays -->
+    <color name="overlay_light">#10000000</color>
+    <color name="overlay_dark">#30000000</color>
+    
+    <!-- Legacy compatibility -->
+    <color name="orange_primary">@color/mint_primary</color>
+    <color name="orange_primary_dark">@color/mint_primary_dark</color>
+    <color name="orange_accent">@color/mint_accent</color>
+    <color name="orange_light">@color/mint_light</color>
+    <color name="orange_text">@color/mint_text</color>
+    
+    <color name="design_default_color_primary">@color/mint_primary</color>
+    
+    <!-- Launcher Icon Background -->
+    <color name="ic_launcher_background">#00D9A3</color>
+</resources>

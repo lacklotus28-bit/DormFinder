@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Phone default configuration -->
+    <integer name="dorm_grid_columns">1</integer>
+    <integer name="featured_dorm_columns">1</integer>
+    
+    <!-- Boolean for layout behavior -->
+    <bool name="use_two_pane_layout">false</bool>
+    <bool name="show_grid_view">false</bool>
+</resources>

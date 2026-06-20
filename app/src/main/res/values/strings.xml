@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DormFinder</string>
+    <string name="partner_name">Partner Name</string>
+    <string name="regarding_dormitory_name">Regarding: Dormitory Name</string>
+    <string name="type_a_message">Type a message...</string>
+    <string name="send">Send</string>
+    <string name="todo">TODO</string>
+    <string name="dormitory_details">Dormitory Details</string>
+    <string name="dormitory_name">Dormitory Name</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+</resources>

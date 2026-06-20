@@ -1,0 +1,101 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.google.services)
+}
+
+android {
+    namespace 'com.rct.dormfinder'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.rct.dormfinder"
+        minSdk 26
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    
+    // Fix for namespace and resource linking issues
+    buildFeatures {
+        buildConfig = true
+    }
+    
+    // Force clean resource processing
+    androidResources {
+        noCompress 'tflite'
+    }
+}
+
+dependencies {
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation libs.generativeai
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    implementation platform(libs.firebase.bom)
+    implementation libs.firebase.auth
+    implementation libs.firebase.firestore
+    implementation libs.firebase.storage
+    implementation libs.firebase.messaging
+
+    // Additional dependencies
+    implementation libs.play.services.maps
+    implementation libs.play.services.location
+    implementation libs.glide
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'  // ⭐ ADDED: Glide annotation processor
+
+    // Add new dependencies
+    implementation libs.gson
+    implementation libs.cardview
+    implementation libs.swiperefreshlayout
+    implementation libs.photoview
+
+    implementation libs.google.firebase.firestore  // latest Firestore SDK
+    implementation libs.google.firebase.auth        // if you're also using Auth
+
+    // Room Database for Offline Storage
+    implementation 'androidx.room:room-runtime:2.6.1'
+    annotationProcessor 'androidx.room:room-compiler:2.6.1'
+    
+    // WorkManager for Background Sync
+    implementation 'androidx.work:work-runtime:2.9.0'
+    
+    // Guava for WorkManager (required dependency)
+    implementation 'com.google.guava:guava:31.1-android'
+    
+    // Lifecycle components
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.7.0'
+    
+    // Cloudinary for image storage
+    implementation('com.cloudinary:cloudinary-android:1.30.0') {
+        exclude group: 'com.linkedin.android.litr', module: 'litr'
+    }
+    implementation 'com.cloudinary:cloudinary-core:1.30.0'
+    
+    // OkHttp for image uploads
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    
+    // Circle Image View
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+}
+
+apply plugin: 'com.google.gms.google-services'

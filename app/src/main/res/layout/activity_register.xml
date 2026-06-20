@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:paddingBottom="250dp"
+        android:clipToPadding="false"
+        android:gravity="center">
+
+        <!-- Logo -->
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/home"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="fitCenter"/>
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/mint_primary"
+            android:letterSpacing="0.02"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Join DormFinder today"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- User Type Selection -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I am a:"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroupUserType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <RadioButton
+                android:id="@+id/rbStudent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/mint_primary"
+                android:checked="true"
+                android:text="Student"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbLandlord"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/mint_primary"
+                android:text="Landlord"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <!-- Name -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColorHint="@color/gray_medium"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/mint_primary"
+            app:hintTextColor="@color/mint_primary"
+            app:startIconDrawable="@drawable/ic_person"
+            app:startIconTint="@color/mint_primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:textColorHint="#424242"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Email -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColorHint="@color/gray_medium"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/mint_primary"
+            app:hintTextColor="@color/mint_primary"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/mint_primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:textColorHint="#424242"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Contact Number -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColorHint="@color/gray_medium"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/mint_primary"
+            app:hintTextColor="@color/mint_primary"
+            app:startIconDrawable="@drawable/ic_phone"
+            app:startIconTint="@color/mint_primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etContactNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contact Number"
+                android:inputType="phone"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:textColorHint="#424242"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Student-specific fields -->
+        <LinearLayout
+            android:id="@+id/layoutStudentFields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textColorHint="@color/gray_medium"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/mint_primary"
+                app:hintTextColor="@color/mint_primary"
+                app:startIconDrawable="@drawable/ic_home"
+                app:startIconTint="@color/mint_primary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSchool"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="School/University"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#424242"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:textColorHint="@color/gray_medium"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/mint_primary"
+                app:hintTextColor="@color/mint_primary"
+                app:startIconDrawable="@drawable/ic_booking"
+                app:startIconTint="@color/mint_primary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCourse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Course/Program"
+                    android:inputType="text"
+                    android:padding="16dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#424242"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- Password -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColorHint="@color/gray_medium"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/mint_primary"
+            app:hintTextColor="@color/mint_primary"
+            app:startIconDrawable="@drawable/ic_security"
+            app:startIconTint="@color/mint_primary"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/mint_primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:textColorHint="#424242"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Confirm Password -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:textColorHint="@color/gray_medium"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/mint_primary"
+            app:hintTextColor="@color/mint_primary"
+            app:startIconDrawable="@drawable/ic_security"
+            app:startIconTint="@color/mint_primary"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/mint_primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:padding="16dp"
+                android:textColor="#000000"
+                android:textColorHint="#424242"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Register Button -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Create Account"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:background="@drawable/button_student"
+            android:textColor="@color/white"
+            android:elevation="4dp"
+            android:layout_marginBottom="24dp"
+            style="?android:attr/borderlessButtonStyle"/>
+
+        <!-- Tips Dashboard Title -->
+        <TextView
+            android:id="@+id/tvTipsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quick Tips"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Horizontal Tips Carousel -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvQuickTips"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:nestedScrollingEnabled="false"
+            android:scrollbars="none"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Login Link -->
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have an account? Login"
+            android:textColor="@color/mint_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:layout_marginBottom="32dp"/>
+    </LinearLayout>
+</ScrollView>

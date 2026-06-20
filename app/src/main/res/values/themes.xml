@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.DormFinder" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary colors -->
+        <item name="colorPrimary">@color/mint_primary</item>
+        <item name="colorPrimaryDark">@color/mint_primary_dark</item>
+        <item name="colorAccent">@color/mint_accent</item>
+        
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/gray_light</item>
+        <item name="colorSurface">@color/white</item>
+        
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/mint_primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="Theme.DormFinder" parent="Base.Theme.DormFinder" />
+
+    <!-- Gold/Yellow Rating Bar Style -->
+    <style name="RatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressTint">@color/rating_star_filled</item>
+        <item name="android:secondaryProgressTint">@color/rating_star</item>
+    </style>
+
+    <!-- Mint Green Text Input Theme -->
+    <style name="MintTextInputTheme" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/mint_primary</item>
+        <item name="hintTextColor">@color/mint_primary</item>
+        <item name="android:textColorHint">@color/gray_text</item>
+    </style>
+    
+    <!-- Legacy Orange Text Input Theme (now uses mint green) -->
+    <style name="OrangeTextInputTheme" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/mint_primary</item>
+        <item name="hintTextColor">@color/mint_primary</item>
+        <item name="android:textColorHint">@color/gray_text</item>
+    </style>
+    
+    <!-- Button Styles -->
+    <style name="MintButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/mint_primary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    
+    <style name="MintOutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/mint_primary</item>
+        <item name="android:textColor">@color/mint_primary</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- Fullscreen Theme for Image Viewer -->
+    <style name="Theme.DormFinder.Fullscreen" parent="Theme.DormFinder">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:statusBarColor">@android:color/black</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+    </style>
+
+    <!-- Custom Alert Dialog Style -->
+    <style name="CustomAlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/mint_primary</item>
+        <item name="colorAccent">@color/mint_accent</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <!-- Positive Button Style (Confirm/Yes) -->
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/mint_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Negative Button Style (Cancel/No) -->
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Circle Image View Style -->
+    <style name="CircleImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Professional Toolbar Title -->
+    <style name="ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <!-- SearchView Style - Dark Text (Black/Gray) -->
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Background -->
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="submitBackground">@android:color/transparent</item>
+        
+        <!-- Icon -->
+        <item name="searchIcon">@drawable/ic_search</item>
+        
+        <!-- Text Colors - NOW DARKER -->
+        <item name="android:textColor">@color/text_primary</item>           <!-- Black: #1A1A1A -->
+        <item name="android:textColorHint">@color/text_secondary</item>     <!-- Gray: #666666 -->
+
+        <!-- Text Size & Style -->
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+        
+        <!-- Cursor Color -->
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+    <!-- Alternative: SearchView with Pure Black Text -->
+    <style name="SearchViewStyleBlack" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="submitBackground">@android:color/transparent</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+        
+        <!-- Pure Black Text -->
+        <item name="android:textColor">@color/black</item>                 <!-- Pure Black: #000000 -->
+        <item name="android:textColorHint">@color/gray_dark</item>         <!-- Dark Gray: #757575 -->
+        
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Alternative: SearchView with Custom Gray Text -->
+    <style name="SearchViewStyleGray" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@android:color/transparent</item>
+        <item name="submitBackground">@android:color/transparent</item>
+        <item name="searchIcon">@drawable/ic_search</item>
+        
+        <!-- Custom Gray Text -->
+        <item name="android:textColor">@color/gray_text</item>             <!-- Dark Gray: #333333 -->
+        <item name="android:textColorHint">@color/gray_medium</item>       <!-- Medium Gray: #BDBDBD -->
+        
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Popup Menu Style with Black Text -->
+    <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:textColorTertiary">@color/black</item>
+    </style>
+    
+    <!-- Popup Menu Text Appearance -->
+    <style name="PopupMenuTextAppearance" parent="TextAppearance.AppCompat.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- ============================================ -->
+    <!-- DARK DATEPICKER THEME - DARKER TEXT COLORS -->
+    <!-- ============================================ -->
+    <style name="DarkDatePickerTheme" parent="Theme.MaterialComponents.Light.Dialog">
+        <!-- Primary color (selected date, header background) -->
+        <item name="colorPrimary">@color/mint_primary</item>
+        <item name="colorPrimaryDark">@color/mint_primary_dark</item>
+        <item name="colorAccent">@color/mint_accent</item>
+        
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        
+        <!-- Text colors - DARKER FOR BETTER VISIBILITY -->
+        <item name="android:textColorPrimary">@color/black</item>          <!-- Date numbers - BLACK -->
+        <item name="android:textColorSecondary">@color/text_primary</item> <!-- Day labels (Mon, Tue, etc) - DARK GRAY -->
+        
+        <!-- Button colors -->
+        <item name="colorControlNormal">@color/text_primary</item>
+        <item name="buttonBarPositiveButtonStyle">@style/DatePickerPositiveButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/DatePickerNegativeButton</item>
+        
+        <!-- Header text color (selected date display at top) -->
+        <item name="android:textColorPrimaryInverse">@color/white</item>
+        
+        <!-- Calendar navigation icons -->
+        <item name="android:textColorSecondaryInverse">@color/white</item>
+    </style>
+
+    <!-- DatePicker Positive Button (OK) -->
+    <style name="DatePickerPositiveButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/mint_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- DatePicker Negative Button (CANCEL) -->
+    <style name="DatePickerNegativeButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Tab Text Style -->
+    <style name="TabTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+</resources>

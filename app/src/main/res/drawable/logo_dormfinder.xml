@@ -1,0 +1,33 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="140dp"
+    android:height="140dp"
+    android:viewportWidth="140"
+    android:viewportHeight="140">
+
+    <!-- Location Pin Background -->
+    <path
+        android:fillColor="@color/mint_primary"
+        android:pathData="M70,20 C54,20 41,33 41,49 C41,71 70,110 70,110 S99,71 99,49 C99,33 86,20 70,20 Z"/>
+
+    <!-- Inner White Circle -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M70,35 C58,35 48,45 48,57 C48,69 58,79 70,79 C82,79 92,69 92,57 C92,45 82,35 70,35 Z"/>
+
+    <!-- House Icon Inside -->
+    <!-- House Base -->
+    <path
+        android:fillColor="@color/mint_primary"
+        android:pathData="M56,64 L84,64 L84,76 L56,76 Z"/>
+
+    <!-- House Roof -->
+    <path
+        android:fillColor="@color/mint_primary"
+        android:pathData="M54,64 L70,50 L86,64 Z"/>
+
+    <!-- Door -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M66,68 L74,68 L74,76 L66,76 Z"/>
+
+</vector>

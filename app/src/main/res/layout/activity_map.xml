@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mint_background"
+    android:fitsSystemWindows="true">
+
+    <!-- Map Fragment Container -->
+    <FrameLayout
+        android:id="@+id/mapContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Map Fragment (Full Screen Background) -->
+        <fragment
+            android:id="@+id/mapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Loading Progress -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:indeterminateTint="@color/mint_primary" />
+
+        <!-- FAB Buttons - Centered on right side of map -->
+        <LinearLayout
+            android:id="@+id/fabContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="20dp"
+            android:elevation="8dp">
+
+            <!-- My Location FAB -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabMyLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_my_location"
+                app:tint="@color/white"
+                app:fabSize="normal"
+                app:backgroundTint="@color/info"
+                app:elevation="8dp"
+                android:contentDescription="My Location" />
+
+            <!-- Refresh FAB -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_refresh"
+                app:tint="@color/white"
+                app:fabSize="mini"
+                app:backgroundTint="@color/success"
+                app:elevation="6dp"
+                android:contentDescription="Refresh" />
+
+            <!-- Filter FAB -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_filter"
+                app:tint="@color/white"
+                app:fabSize="mini"
+                app:backgroundTint="@color/warning"
+                app:elevation="6dp"
+                android:contentDescription="Filter" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Modern Non-Transparent Header for System UI Visibility -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/headerCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@color/mint_primary"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:id="@+id/headerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Explore Dormitories"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:fontFamily="sans-serif" android:textStyle="bold" />
+
+            <!-- Toggle Search Panel Button -->
+            <ImageView
+                android:id="@+id/btnToggleSearch"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_search"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/white"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Toggle search"
+                tools:ignore="UseAppTint" />
+
+            <!-- Map Type Toggle Button -->
+            <ImageView
+                android:id="@+id/btnMapType"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_layers"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@color/white"
+                android:contentDescription="Change map type"
+                tools:ignore="UseAppTint" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Collapsible Search Panel -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/searchPanelCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:visibility="gone"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeColor="@color/mint_light"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Search Bar -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/mint_light"
+                app:strokeColor="@color/mint_primary"
+                app:strokeWidth="1dp">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
+                    style="@style/SearchViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="12dp"
+                    android:background="@android:color/transparent"
+                    app:queryHint="Search dormitories, locations..."
+                    app:iconifiedByDefault="false"
+                    app:queryBackground="@android:color/transparent" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/mint_light"
+                android:layout_marginVertical="20dp" />
+
+            <!-- Radius Control Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_location"
+                    android:tint="@color/mint_primary"
+                    android:layout_marginEnd="12dp"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Search Radius"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif" android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:cardBackgroundColor="@color/mint_light"
+                    app:strokeColor="@color/mint_primary"
+                    app:strokeWidth="1dp">
+
+                    <TextView
+                        android:id="@+id/radiusValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5.0 km"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif" android:textStyle="bold"
+                        android:textColor="@color/mint_primary"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- SeekBar -->
+            <SeekBar
+                android:id="@+id/radiusSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="20"
+                android:progress="4"
+                android:progressTint="@color/mint_primary"
+                android:thumbTint="@color/mint_primary"
+                android:progressBackgroundTint="@color/mint_light"
+                android:layout_marginBottom="20dp" />
+
+            <!-- Enable Radius Search -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/mint_light"
+                app:strokeColor="@color/mint_primary"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="18dp">
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/radiusSearchEnabled"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/mint_primary"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Enable Radius Search"
+                            android:textSize="16sp"
+                            android:fontFamily="sans-serif" android:textStyle="bold"
+                            android:textColor="@color/text_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tap map or marker to set location"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif"
+                            android:textColor="@color/text_secondary"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Full-Screen Results Bottom Sheet -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/resultsBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_peekHeight="160dp"
+        app:behavior_hideable="false"
+        app:behavior_halfExpandedRatio="0.5"
+        app:behavior_fitToContents="false"
+        app:layout_dodgeInsetEdges="top">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/bottomSheetCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <!-- Drag Handle -->
+                <View
+                    android:layout_width="48dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_bottom_sheet_handle" />
+
+                <!-- Header with Count -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="24dp"
+                    android:paddingBottom="20dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Available Dormitories"
+                            android:textSize="22sp"
+                            android:fontFamily="sans-serif" android:textStyle="bold"
+                            android:textColor="@color/text_primary" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="6dp">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_location"
+                                android:tint="@color/mint_primary"
+                                android:layout_marginEnd="6dp"
+                                tools:ignore="UseAppTint" />
+
+                            <TextView
+                                android:id="@+id/tvDormCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 locations"
+                                android:textSize="14sp"
+                                android:fontFamily="sans-serif"
+                                android:textColor="@color/text_secondary" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Radius Badge -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="2dp"
+                        app:cardBackgroundColor="@color/mint_light"
+                        app:strokeColor="@color/mint_primary"
+                        app:strokeWidth="1dp">
+
+                        <TextView
+                            android:id="@+id/radiusInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="All"
+                            android:textSize="14sp"
+                            android:textColor="@color/mint_primary"
+                            android:fontFamily="sans-serif" android:textStyle="bold"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="10dp" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/gradient_divider"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Empty State -->
+                <LinearLayout
+                    android:id="@+id/emptyStateLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="40dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:src="@drawable/ic_empty_map"
+                        android:tint="@color/mint_light"
+                        android:alpha="0.6"
+                        android:layout_marginBottom="20dp"
+                        tools:ignore="UseAppTint" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No Dormitories Found"
+                        android:textSize="20sp"
+                        android:fontFamily="sans-serif" android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Try adjusting your search or radius"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/text_secondary"
+                        android:gravity="center"
+                        android:lineSpacingExtra="4dp" />
+                </LinearLayout>
+
+                <!-- Full-Screen RecyclerView (Vertical Grid) -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/nearbyList"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="100dp"
+                    android:clipToPadding="false"
+                    tools:listitem="@layout/item_map_dormitory" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- Student Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:elevation="12dp"
+        app:itemIconTint="@color/bottom_nav_color"
+        app:itemTextColor="@color/bottom_nav_color"
+        app:labelVisibilityMode="labeled" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

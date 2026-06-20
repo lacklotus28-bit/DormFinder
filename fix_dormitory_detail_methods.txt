@@ -1,0 +1,212 @@
+    /**
+     * Check if user already has an active booking before allowing new booking
+     * STEP 1: Global check for paid/confirmed across ALL dorms
+     * STEP 2: Per-dormitory check for pending/approved for THIS dorm
+     */
+    private void checkExistingBookingsBeforeBooking() {
+        if (currentUserId == null || dormitoryId == null) {
+            Toast.makeText(this, "Unable to process booking", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
+        android.util.Log.d("DormitoryDetail", "Checking existing bookings for user: " + currentUserId);
+        
+        // Show loading
+        if (btnBookNow != null) {
+            btnBookNow.setEnabled(false);
+            btnBookNow.setText("Checking...");
+        }
+        
+        // STEP 1: Check for paid/confirmed bookings across ALL dormitories
+        db.collection("bookings")
+                .whereEqualTo("studentId", currentUserId)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    boolean hasPaidOrConfirmedBooking = false;
+                    String globalBlockingStatus = "";
+                    String blockedDormName = "";
+                    
+                    // Check for paid/confirmed bookings across ALL dorms
+                    for (int i = 0; i < querySnapshot.size(); i++) {
+                        String status = querySnapshot.getDocuments().get(i).getString("status");
+                        String checkDormId = querySnapshot.getDocuments().get(i).getString("dormitoryId");
+                        
+                        android.util.Log.d("DormitoryDetail", "Found booking for dorm " + checkDormId + " with status: " + status);
+                        
+                        // CRITICAL: Block if user has paid/confirmed booking in ANY dorm
+                        if ("paid".equals(status) || "confirmed".equals(status)) {
+                            hasPaidOrConfirmedBooking = true;
+                            globalBlockingStatus = status;
+                            blockedDormName = querySnapshot.getDocuments().get(i).getString("dormitoryName");
+                            android.util.Log.d("DormitoryDetail", "GLOBAL BLOCK: Found " + status + " booking at " + blockedDormName);
+                            break;
+                        }
+                    }
+                    
+                    if (hasPaidOrConfirmedBooking) {
+                        // Reset button
+                        if (btnBookNow != null) {
+                            btnBookNow.setEnabled(true);
+                            btnBookNow.setText("Book Now");
+                        }
+                        showGlobalBookingBlockDialog(globalBlockingStatus, blockedDormName);
+                        return;
+                    }
+                    
+                    // STEP 2: No paid/confirmed found globally, check THIS specific dormitory for pending/approved
+                    checkSpecificDormitoryBooking();
+                })
+                .addOnFailureListener(e -> {
+                    android.util.Log.e("DormitoryDetail", "Failed to check global bookings: " + e.getMessage());
+                    
+                    // Reset button
+                    if (btnBookNow != null) {
+                        btnBookNow.setEnabled(true);
+                        btnBookNow.setText("Book Now");
+                    }
+                    
+                    Toast.makeText(this, "Error checking bookings. Please try again.", 
+                            Toast.LENGTH_SHORT).show();
+                });
+    }
+    
+    /**
+     * Check for pending/approved bookings for this specific dormitory
+     */
+    private void checkSpecificDormitoryBooking() {
+        db.collection("bookings")
+                .whereEqualTo("studentId", currentUserId)
+                .whereEqualTo("dormitoryId", dormitoryId)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    boolean hasActiveBooking = false;
+                    String existingStatus = "";
+                    
+                    for (int i = 0; i < querySnapshot.size(); i++) {
+                        String status = querySnapshot.getDocuments().get(i).getString("status");
+                        android.util.Log.d("DormitoryDetail", "Found booking for THIS dorm with status: " + status);
+                        
+                        // Check for pending/approved (paid/confirmed already handled globally)
+                        if ("pending".equals(status) || "approved".equals(status)) {
+                            hasActiveBooking = true;
+                            existingStatus = status;
+                            break;
+                        }
+                    }
+                    
+                    // Reset button
+                    if (btnBookNow != null) {
+                        btnBookNow.setEnabled(true);
+                        btnBookNow.setText("Book Now");
+                    }
+                    
+                    if (hasActiveBooking) {
+                        android.util.Log.d("DormitoryDetail", "Active booking found for THIS dorm with status: " + existingStatus);
+                        showExistingBookingDialog(existingStatus);
+                    } else {
+                        android.util.Log.d("DormitoryDetail", "No active booking found, proceeding with booking");
+                        // No active booking, proceed to booking form
+                        Intent bookingIntent = new Intent(this, BookingRequestActivity.class);
+                        bookingIntent.putExtra("dormitory_id", dormitoryId);
+                        bookingIntent.putExtra("landlord_id", dormitory.getLandlordId());
+                        startActivity(bookingIntent);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    android.util.Log.e("DormitoryDetail", "Failed to check specific dorm bookings: " + e.getMessage());
+                    
+                    // Reset button
+                    if (btnBookNow != null) {
+                        btnBookNow.setEnabled(true);
+                        btnBookNow.setText("Book Now");
+                    }
+                    
+                    Toast.makeText(this, "Error checking bookings. Please try again.", 
+                            Toast.LENGTH_SHORT).show();
+                });
+    }
+    
+    /**
+     * Show dialog when user has paid/confirmed booking in another dormitory
+     */
+    private void showGlobalBookingBlockDialog(String status, String dormitoryName) {
+        androidx.appcompat.app.AlertDialog.Builder builder = 
+                new androidx.appcompat.app.AlertDialog.Builder(this);
+        
+        builder.setTitle("Active Booking Exists");
+        builder.setIcon(R.drawable.ic_info);
+        
+        String message;
+        if ("confirmed".equals(status)) {
+            message = "You already have a confirmed booking at " + dormitoryName + ".\n\n" +
+                     "You can only have one active booking at a time. If you wish to book a different dormitory, " +
+                     "please cancel your current booking first.";
+        } else if ("paid".equals(status)) {
+            message = "You have a paid booking at " + dormitoryName + " awaiting confirmation.\n\n" +
+                     "Please wait for the landlord to confirm your payment before booking another dormitory. " +
+                     "If you wish to proceed with a different dorm, please cancel your current booking first.";
+        } else {
+            message = "You already have an active booking at " + dormitoryName + ".\n\n" +
+                     "You can only have one active booking at a time.";
+        }
+        
+        builder.setMessage(message);
+        
+        builder.setPositiveButton("View My Bookings", (dialog, which) -> {
+            Intent intent = new Intent(this, StudentBookingsActivity.class);
+            startActivity(intent);
+        });
+        
+        builder.setNegativeButton("Close", null);
+        builder.setCancelable(false);
+        builder.show();
+    }
+    
+    /**
+     * Show dialog about existing booking for this specific dormitory
+     */
+    private void showExistingBookingDialog(String status) {
+        String title, message;
+        
+        switch (status) {
+            case "pending":
+                title = "Pending Booking Request";
+                message = "You already have a pending booking request for this dormitory. " +
+                         "Please wait for the landlord to review your request.";
+                break;
+            case "approved":
+                title = "Booking Approved!";
+                message = "Your booking request has been approved! " +
+                         "Please proceed with payment to confirm your booking.";
+                break;
+            default:
+                title = "Active Booking";
+                message = "You already have an active booking for this dormitory.";
+                break;
+        }
+        
+        androidx.appcompat.app.AlertDialog.Builder builder = 
+                new androidx.appcompat.app.AlertDialog.Builder(this);
+        
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setIcon(R.drawable.ic_info);
+        
+        // Add appropriate action buttons
+        if ("approved".equals(status)) {
+            builder.setPositiveButton("Make Payment", (dialog, which) -> {
+                Intent intent = new Intent(this, StudentBookingsActivity.class);
+                intent.putExtra("highlightApprovedBookings", true);
+                startActivity(intent);
+            });
+        } else {
+            builder.setPositiveButton("View My Bookings", (dialog, which) -> {
+                Intent intent = new Intent(this, StudentBookingsActivity.class);
+                startActivity(intent);
+            });
+        }
+        
+        builder.setNegativeButton("Close", null);
+        builder.show();
+    }
+}

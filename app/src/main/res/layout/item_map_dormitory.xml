@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Map Dormitory Item - With Distance Display & GPS Navigation -->
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Image Container -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@color/gray_light">
+
+            <!-- Actual Dorm Image -->
+            <ImageView
+                android:id="@+id/ivImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
+
+            <!-- Placeholder Icon when no image -->
+            <ImageView
+                android:id="@+id/ivPlaceholder"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_home"
+                android:tint="@color/gray_text"
+                android:visibility="gone"
+                tools:ignore="UseAppTint" />
+
+            <!-- Rating Badge (Top Left) - YELLOW -->
+            <LinearLayout
+                android:id="@+id/ratingBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="8dp"
+                android:background="@drawable/rounded_yellow_bg"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_star"
+                    android:tint="@color/white"
+                    android:layout_marginEnd="4dp"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:id="@+id/tvRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <!-- Available Rooms Badge (Bottom Center) - MINT -->
+            <TextView
+                android:id="@+id/tvRooms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:text="2 rooms available"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_mint_bg"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"/>
+
+            <!-- Favorite Button (Top Right) -->
+            <ImageView
+                android:id="@+id/ivFavorite"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="8dp"
+                android:src="@drawable/ic_favorite_border"
+                android:background="@drawable/circle_white_bg"
+                android:padding="6dp"
+                android:tint="@color/mint_primary"
+                tools:ignore="UseAppTint" />
+        </FrameLayout>
+
+        <!-- Dorm Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Dorm Name -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Test"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <!-- Location with icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="6dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_location"
+                    android:tint="@color/mint_primary"
+                    android:layout_marginEnd="4dp"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Location"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
+            </LinearLayout>
+
+            <!-- Distance Badge (NEW!) -->
+            <LinearLayout
+                android:id="@+id/distanceBadge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="6dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_directions"
+                    android:tint="@color/mint_primary"
+                    android:layout_marginEnd="4dp"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:id="@+id/tvDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.3 km away"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/mint_primary"/>
+            </LinearLayout>
+
+            <!-- Price -->
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="₱1,500.00"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/mint_primary"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Amenities -->
+            <TextView
+                android:id="@+id/tvAmenities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="WiFi • Kitchen • Balcony"
+                android:textSize="11sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <!-- Action Buttons Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginTop="10dp">
+
+                <!-- Get Directions Icon Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGetDirections"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="56dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="Get Directions"
+                    app:icon="@drawable/ic_navigation"
+                    app:iconTint="@color/white"
+                    app:iconSize="24dp"
+                    app:iconPadding="0dp"
+                    app:iconGravity="textStart"
+                    app:backgroundTint="@color/mint_primary"
+                    app:cornerRadius="12dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:padding="0dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

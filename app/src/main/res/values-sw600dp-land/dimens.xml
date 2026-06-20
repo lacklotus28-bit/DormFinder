@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tablet Landscape: Optimized for wide screens -->
+    <!-- Spacing optimized for landscape tablets -->
+    <dimen name="spacing_extra_small">6dp</dimen>
+    <dimen name="spacing_small">10dp</dimen>
+    <dimen name="spacing_medium">14dp</dimen>
+    <dimen name="spacing_large">20dp</dimen>
+    <dimen name="spacing_extra_large">28dp</dimen>
+    <dimen name="spacing_xxl">40dp</dimen>
+
+    <!-- Component Sizes -->
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="button_height_small">48dp</dimen>
+    <dimen name="toolbar_height">64dp</dimen>
+
+    <!-- Card & List Items -->
+    <dimen name="list_item_height">140dp</dimen>
+    <dimen name="list_item_height_compact">100dp</dimen>
+    <dimen name="image_height">280dp</dimen>
+
+    <!-- Bottom Sheet -->
+    <dimen name="bottom_sheet_height">300dp</dimen>
+    <dimen name="bottom_sheet_height_expanded">500dp</dimen>
+
+    <!-- Max Width - wider for landscape tablets -->
+    <dimen name="content_max_width">1200dp</dimen>
+</resources>

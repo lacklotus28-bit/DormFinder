@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Phone: Base Dimensions -->
+    <!-- Padding & Margins -->
+    <dimen name="spacing_extra_small">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">12dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_extra_large">24dp</dimen>
+    <dimen name="spacing_xxl">32dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+    <dimen name="text_size_subtitle">16sp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_size_headline">24sp</dimen>
+    <dimen name="text_size_display">32sp</dimen>
+
+    <!-- Component Sizes -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_height_small">40dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="icon_size_large">32dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="bottom_nav_height">56dp</dimen>
+
+    <!-- Card & List Items -->
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="list_item_height">120dp</dimen>
+    <dimen name="list_item_height_compact">80dp</dimen>
+    <dimen name="image_height">200dp</dimen>
+
+    <!-- Bottom Sheet -->
+    <dimen name="bottom_sheet_height">240dp</dimen>
+    <dimen name="bottom_sheet_height_expanded">400dp</dimen>
+
+    <!-- Max Width (for tablets in landscape) -->
+    <dimen name="content_max_width">600dp</dimen>
+    
+    <!-- Recent Dorm Spacing -->
+    <dimen name="recent_dorm_spacing">8dp</dimen>
+</resources>

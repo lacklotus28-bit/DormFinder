@@ -1,0 +1,46 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Enhanced Dark Theme -->
+    <style name="Base.Theme.DormFinder" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary colors - Keep mint green for consistency -->
+        <item name="colorPrimary">@color/mint_primary</item>
+        <item name="colorPrimaryDark">@color/mint_primary_dark</item>
+        <item name="colorAccent">@color/mint_accent</item>
+        
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/dark_background</item>
+        <item name="colorSurface">@color/dark_surface</item>
+        <item name="colorSurfaceVariant">@color/dark_surface_elevated</item>
+        
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/text_primary_dark</item>
+        <item name="android:textColorSecondary">@color/text_secondary_dark</item>
+        <item name="android:textColorTertiary">@color/text_tertiary_dark</item>
+        <item name="android:textColorHint">@color/text_hint_dark</item>
+        
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/dark_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        
+        <!-- Navigation bar -->
+        <item name="android:navigationBarColor">@color/dark_background</item>
+        
+        <!-- Card colors -->
+        <item name="colorOnSurface">@color/text_primary_dark</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary_dark</item>
+    </style>
+
+    <!-- Popup Menu Style with Black Text (same as light theme) -->
+    <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:textColorTertiary">@color/black</item>
+    </style>
+    
+    <!-- Popup Menu Text Appearance -->
+    <style name="PopupMenuTextAppearance" parent="TextAppearance.AppCompat.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

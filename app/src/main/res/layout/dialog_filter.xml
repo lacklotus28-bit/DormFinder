@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Dialog Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Filter Dormitories"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"/>
+
+        <!-- City Filter Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/mint_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="City"
+                    android:textStyle="bold"
+                    android:textColor="@color/mint_primary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <RadioGroup
+                    android:id="@+id/rgCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rbAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="All Cities"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:checked="true"
+                        android:buttonTint="@color/mint_primary"
+                        android:paddingVertical="4dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rbBatangas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Batangas"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:buttonTint="@color/mint_primary"
+                        android:paddingVertical="4dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rbLipa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lipa"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:buttonTint="@color/mint_primary"
+                        android:paddingVertical="4dp"/>
+                </RadioGroup>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Price Range Filter Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/mint_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price Range (Monthly)"
+                    android:textStyle="bold"
+                    android:textColor="@color/mint_primary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:hint="Min Price"
+                        app:boxBackgroundColor="@android:color/white"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:hintTextColor="@color/mint_primary"
+                        app:boxStrokeColor="@color/mint_primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etMinPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:hint="Max Price"
+                        app:boxBackgroundColor="@android:color/white"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:hintTextColor="@color/mint_primary"
+                        app:boxStrokeColor="@color/mint_primary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etMaxPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Amenities Filter Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/mint_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amenities"
+                    android:textStyle="bold"
+                    android:textColor="@color/mint_primary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <CheckBox
+                    android:id="@+id/cbWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WiFi"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:buttonTint="@color/mint_primary"
+                    android:paddingVertical="4dp"/>
+
+                <CheckBox
+                    android:id="@+id/cbAircon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Air Conditioning"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:buttonTint="@color/mint_primary"
+                    android:paddingVertical="4dp"/>
+
+                <CheckBox
+                    android:id="@+id/cbParking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Parking"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:buttonTint="@color/mint_primary"
+                    android:paddingVertical="4dp"/>
+
+                <CheckBox
+                    android:id="@+id/cbLaundry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Laundry"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:buttonTint="@color/mint_primary"
+                    android:paddingVertical="4dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Availability Filter Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/mint_light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <CheckBox
+                    android:id="@+id/cbAvailableOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show available only"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:buttonTint="@color/mint_primary"
+                    android:checked="false"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Filter Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Reset"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/mint_primary"
+                android:backgroundTint="@android:color/white"
+                app:strokeColor="@color/mint_primary"
+                app:strokeWidth="2dp"
+                app:cornerRadius="12dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+            <Button
+                android:id="@+id/btnApply"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Apply Filters"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/mint_primary"
+                app:cornerRadius="12dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

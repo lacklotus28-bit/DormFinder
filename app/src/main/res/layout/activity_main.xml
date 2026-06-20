@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <!-- Background Gradient Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/backgroundCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="40dp">
+
+            <!-- App Logo/Title Section -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginBottom="48dp">
+
+                <!-- Logo with Background -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    app:cardCornerRadius="80dp"
+                    app:cardElevation="12dp"
+                    app:cardBackgroundColor="@color/mint_extra_light"
+                    android:layout_marginBottom="24dp">
+
+                    <ImageView
+                        android:id="@+id/imgLogo"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/home"
+                        android:scaleType="fitCenter"
+                        app:tint="@color/mint_primary"/>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvAppName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DormFinder"
+                    android:textSize="42sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/mint_primary"
+                    android:letterSpacing="0.02"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <TextView
+                    android:id="@+id/tvTagline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Find your perfect dormitory"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_secondary"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-light"/>
+            </LinearLayout>
+
+            <!-- Buttons Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="32dp">
+
+                <!-- Student Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStudentLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="I'm a Student"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/mint_primary"
+                    app:cornerRadius="16dp"
+                    app:elevation="8dp"
+                    app:icon="@drawable/ic_person"
+                    app:iconTint="@color/white"
+                    app:iconGravity="textStart"
+                    app:iconPadding="16dp"
+                    app:iconSize="24dp"
+                    android:fontFamily="sans-serif-medium"
+                    app:rippleColor="@color/mint_primary_light"/>
+
+                <!-- Landlord Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLandlordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:text="I'm a Landlord"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mint_primary"
+                    app:backgroundTint="@color/white"
+                    app:strokeColor="@color/mint_primary"
+                    app:strokeWidth="2dp"
+                    app:cornerRadius="16dp"
+                    app:elevation="4dp"
+                    app:icon="@drawable/ic_home"
+                    app:iconTint="@color/mint_primary"
+                    app:iconGravity="textStart"
+                    app:iconPadding="16dp"
+                    app:iconSize="24dp"
+                    android:fontFamily="sans-serif-medium"
+                    app:rippleColor="@color/mint_light"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                <!-- Guest Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGuestLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Continue as Guest"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/mint_primary"
+                    app:backgroundTint="@color/white"
+                    app:strokeColor="@color/mint_primary"
+                    app:strokeWidth="2dp"
+                    app:cornerRadius="16dp"
+                    app:elevation="4dp"
+                    app:icon="@drawable/ic_visibility"
+                    app:iconTint="@color/mint_primary"
+                    app:iconGravity="textStart"
+                    app:iconPadding="16dp"
+                    app:iconSize="24dp"
+                    android:fontFamily="sans-serif-medium"
+                    app:rippleColor="@color/mint_light"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+            </LinearLayout>
+
+            <!-- Footer -->
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to DormFinder!"
+                android:textSize="16sp"
+                android:textColor="@color/text_secondary"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

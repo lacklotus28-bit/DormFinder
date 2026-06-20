@@ -1,0 +1,32 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="150dp"
+    android:viewportWidth="200"
+    android:viewportHeight="150">
+    
+    <!-- Background -->
+    <path
+        android:fillColor="@color/gray_light"
+        android:pathData="M0,0L200,0L200,150L0,150z"/>
+    
+    <!-- House icon -->
+    <path
+        android:fillColor="@color/gray_text"
+        android:pathData="M100,40L60,70L60,110L140,110L140,70z"/>
+    <path
+        android:fillColor="@color/gray_text"
+        android:pathData="M100,30L50,65L50,70L60,70L60,65L100,40L140,65L140,70L150,70L150,65z"/>
+    
+    <!-- Door -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M90,85L110,85L110,110L90,110z"/>
+    
+    <!-- Windows -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M70,80L85,80L85,95L70,95z"/>
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M115,80L130,80L130,95L115,95z"/>
+</vector>
